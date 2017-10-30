@@ -1,8 +1,14 @@
 
-var x, y, t, v, factorCrescimento, xAnterior, yAnterior;
+var x, y, t, v, factorCrescimento, xAnterior, yAnterior, pix;
+var img;
+function preload() {
+  img = loadImage("imagem/EVA.png");
+}
 function setup() 
 {
-  createCanvas (windowWidth, windowHeight);
+  createCanvas (596, 842, SVG);
+  
+  image(img, 0, 0);
   x = width/2;
   y = height/2;
   xAnterior = x;
@@ -31,8 +37,9 @@ function draw()
 
   t +=factorCrescimento;
  
+  var pix = img.get(x,y);
   noFill();
-  stroke (random(255), random(255), random(255));
+  stroke (pix, 128);
   line(xAnterior, yAnterior, x, y);
 
   xAnterior = x;
@@ -40,7 +47,14 @@ function draw()
 }
 
 
-function windowResized() 
+function keyPressed()
 {
-  resizeCanvas (windowWidth, windowHeight);
+  if (key === "1")
+  {
+    noLoop();
+    save("meuProjecto.svg");
+
+  }
+
+
 }
