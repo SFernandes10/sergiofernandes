@@ -1,32 +1,30 @@
 
-var x, y, t, v;
+var cor;
 
 // t - tamanho v- Velocidade
 function setup() 
 {
   createCanvas (windowWidth, windowHeight);
-
+cor = 0;
 }
 
 
 function draw()
-{ background(255);
+{ 
   
  
-  if (mouseX>x/2 && mouseX<y)
-  {
-    Fill(0);
-  }
-  else
-  {
-    noFill();
-  }
-  stroke(255, 0, 0);
-  line(width/2, 0, width/2, height);
+  if (mouseX > width/2) Cor++;  
+    else cor--;
+  
+    if (cor>255) cor = 255;
+    if (cor<0) cor=0;
+    background(cor);
+
+    stroke (255, 0, 0);
+    line(width/2, 0, width/2, height);
+
 
 }
-
-
 function windowResized() 
 {
   resizeCanvas (windowWidth, windowHeight);
